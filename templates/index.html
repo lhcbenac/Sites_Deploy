@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flask Web App</title>
+</head>
+<body>
+    <h1>Hello, World!</h1>
+
+    <!-- Add a button to trigger an action -->
+    <button id="load-button" onclick="loadData()">Load Data</button>
+
+    <!-- Add a label to display the loading status -->
+    <p id="loading-status"></p>
+
+    <script>
+        function loadData() {
+            var statusLabel = document.getElementById("loading-status");
+            var loadButton = document.getElementById("load-button");
+
+            statusLabel.innerText = "Loading..."; // Update the status label
+
+            // Simulate a loading action (you can replace this with your actual loading code)
+            setTimeout(function() {
+                statusLabel.innerText = "Data Loaded!";
+            }, 3000); // Replace with the actual loading time
+
+            // Disable the button during loading to prevent multiple clicks
+            loadButton.disabled = true;
+
+            // Enable the button after a delay to simulate completion
+            setTimeout(function() {
+                loadButton.disabled = false;
+            }, 3000); // Adjust the time as needed
+        }
+    </script>
+</body>
+</html>
