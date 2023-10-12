@@ -12,6 +12,9 @@
     <!-- Add a label to display the loading status -->
     <p id="loading-status"></p>
 
+    <!-- Add a div to display the result -->
+    <div id="result"></div>
+
     <script>
         function loadData() {
             var statusLabel = document.getElementById("loading-status");
@@ -21,7 +24,15 @@
 
             // Simulate a loading action (you can replace this with your actual loading code)
             setTimeout(function() {
-                statusLabel.innerText = "Data Loaded!";
+                // Make an AJAX request to the Flask endpoint
+                fetch('/load_data')
+                    .then(response => response.text())
+                    .then(data => {
+                        // Display the result in the 'result' div
+                        document.getElementById("result").innerText = "Result: " + data;
+                        statusLabel.innerText = "Data Loaded!";
+                    })
+                    .catch(error => console.error(error));
             }, 3000); // Replace with the actual loading time
 
             // Disable the button during loading to prevent multiple clicks
